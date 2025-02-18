@@ -1,0 +1,112 @@
+---
+title: "sampling"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{sampling}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## An example of using the sampling algorithm
+
+```{r setup}
+library(openmuse)
+library(here)
+```
+
+
+This notebook will discuss the pieces of the sampling algorithm and how to use them to generate a random sample of music tracks.
+
+First we have to load the data.
+
+```{r data}
+data("example")
+```
+
+Let's then have a quick look at the variables available on this data set.
+
+```{r head}
+print(head(example))
+```
+
+We have following variables:
+
+  - **id:** The track Spotify id.
+  - **isrc:** The ISRC of the track
+  - **registrant: ** The registrant code extracted from the ISRC
+  - **year:** The year of reference extracted from the ISRC
+  - **designation:** The designation code extracted from the ISRC
+  - **popularity:**Spotify popularity index of the track at the moment the query was made.
+  
+This data set contains 1204 observations and they will be our "fictitious" empirical population in this example.
+  
+Then let's see how we use the algorithm to generate a random sample.
+
+## Algorithm
+
+The algorithm developed in this package is describe on Subsection 2.1 and Section 3 of Thompson 2006 - Targeted Random Walk Designs (full text <https://www.sfu.ca/~thompson/research/walks-finaldraft.pdf>). 
+
+
+### Step 1
+
+First, we need to build the adjancency matrix that will define our network structure.
+
+```{r A}
+A <- A_compute(example, struct = "registrant")
+```
+
+In this case, we build the network based on the registrant. This means that tracks with the same registrant will be connected. However, if you wish, you can build the network structure with a different variable. For instance, if you have a column called **genre** in you data, which states the genre of every track, you can use that to create a network based on the genre of the recordings.
+
+### Step 2
+
+We then compute the matrix with transition probabilities.
+
+```{r Q}
+Q <- Q_compute(A, d = 0.5)
+```
+
+### Step 3
+
+We adjust this transition matrix, based on the node degree, that will be used in the acceptance step of the Metropolis-Hastings. 
+
+```{r QMH}
+QMH <- Q_compute_MH(A, Q, d = 0.5)
+```
+
+
+### Step 4
+
+Now we use the network (i.e. the adjancency matrix A that defines the network) and the transition probability matrix to generate a random sample. In this case, the sample size equals 100.
+
+```{r sample}
+samp <- samplerMH(A, QMH, d = 0.5, size = 100)
+```
+
+### Step 5
+
+Note that the **samplerMH** function only returns the indexes of the rows that should be included in this sample, according to the algorithm. Thus, if you are interested in computing metrics across multiple columns, you can simple using the indexes return by the **samplerMH**. In this example, we can only calculate metrics for the **popularity** index. So we will use that. Below you see a histogram of the distribution of the popularity index in our sample.
+
+```{r hist}
+hist(example$popularity[samp$sample],
+     main = "Sample example",
+     xlab = "popularity")
+box()
+```
+
+Let's now compute the mean and compare with the mean of our fictitious population of tracks. These values shouldn't be too far from each other, but, given that the sample is randomly generated, this might happen once or twice. Then, let's generate 1000 samples and see how close that gets from the true value
+
+```{r sample_mean}
+boot <- replicate(1000, samplerMH(A, QMH, d = 0.5, size = 100)$sample)
+mean_boot <- sapply(1:ncol(boot), function(i) mean(example$popularity[boot[,i]]))
+print(paste("sample mean:", mean(mean_boot)))
+```
+
+```{r pop_mean}
+print(paste("population mean:", mean(example$popularity)))
+```
+
+That is reasonably close. If you wish to see a bigger change, you can play with the parameters **$d$** and **size**.
+
+### Observation
+
+You might be wondering what the parameter $d = 0.5$ represents. This is the probability of jumping to a non-neighbour. Given that network structure is build based on the registrant, tracks with different registrants are not connected. Therefore, we need to make this jumps to guarantee that we properly explore the structure of this network. If you wish, you can change this value and see how things will change.

@@ -1,0 +1,20 @@
+Package: openmuse
+Title: A package that contains a sampling algorithm developed for the OpenMusE project.
+Version: 0.0.0.9000
+Authors@R: 
+    person("Fabio", "Vieira", , "f.v.vieira@uva.nl", role = c("aut", "cre"),
+           comment = c(ORCID = "orcid.org/0000-0003-4253-1953"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
+LazyData: true
+VignetteBuilder: knitr
