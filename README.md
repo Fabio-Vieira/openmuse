@@ -1,6 +1,6 @@
 <br />
 
-<img align="right" width="185" src='https://raw.githubusercontent.com/Fabio-Vieira/openmuse/main/man/figures/openmuse-logo.png'>
+<img align="right" width="185" src='man/figures/openmuse_logo.png'>
 
 # **openmuse**
 
