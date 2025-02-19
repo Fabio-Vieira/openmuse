@@ -1,8 +1,8 @@
+# **openmuse** 
+
 <br />
 
 <img align="right" width="185" src='man/figures/openmuse_logo.png'>
-
-# **openmuse**
 
 This package contains function to generate random samples of music tracks. The algorithm developed is a targeted Metropolis-Hastings random walk with jumps, where the target distribution is uniform. This algorithm is described in Thompson (2006).
 
