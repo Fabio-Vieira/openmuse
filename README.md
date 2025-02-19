@@ -12,7 +12,7 @@ The main idea consists in structuring the music recordings as a network. The fun
 
 ```{R instal}
 install.packages("devtools")
-devtools::install_github("Fabio-Vieira/openmuse")
+devtools::install_github("Fabio-Vieira/openmuse", build_vignettes = TRUE)
 ```
 
 ## Basic workflow
@@ -35,6 +35,12 @@ hist(example$popularity[samp$sample],
      main = "Sample example",
      xlab = "popularity")
 box()
+```
+
+For more information check the vignette:
+
+```{r vignette}
+vignette("sampling", package = "openmuse")
 ```
 
 ## Reference
