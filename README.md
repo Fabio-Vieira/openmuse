@@ -15,7 +15,7 @@ install.packages("devtools")
 devtools::install_github("Fabio-Vieira/openmuse", build_vignettes = TRUE)
 ```
 
-## Basic workflow
+## Workflow
 
 In this example a network is constructed based on the registrant code extracted from the International Standard Recording Code (ISO 3901, 2019). This code has the following structure
 
