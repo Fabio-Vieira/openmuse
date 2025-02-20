@@ -3,7 +3,7 @@
 \docType{data}
 \name{example}
 \alias{example}
-\title{My Dataset}
+\title{example}
 \format{
 A data frame with 1204 rows and 6 variables:
 \describe{

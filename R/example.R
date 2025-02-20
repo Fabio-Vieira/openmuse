@@ -1,4 +1,4 @@
-#' My Dataset
+#' example
 #'
 #' This data set is used to showcase the sampling algorithm.
 #' It contains 6 variables and it was collected on June 24, 2024.
