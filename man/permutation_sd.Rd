@@ -21,7 +21,8 @@ permutation_sd: this function performs the permutation test for the standard dev
 }
 \examples{
 
-# This function performs the following test: H_0: sd's are equal against H_1: not equal
+# This function performs the following test: H_0: sd's are equal 
+# against H_1: not equal
 
 N <- 10000
 x1 <- rnorm(100)

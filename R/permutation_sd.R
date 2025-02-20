@@ -5,11 +5,12 @@
 #' @param N number of resamples to approximate the permutation distribution under the null
 #'
 #' @return a list containing the permutation distribution, the observed ratio in sd's and the p value
-#'
+#' @importFrom stats runif sd
 #'
 #' @examples
 #'
-#' # This function performs the following test: H_0: sd's are equal against H_1: not equal
+#' # This function performs the following test: H_0: sd's are equal 
+#' # against H_1: not equal
 #'
 #' N <- 10000
 #' x1 <- rnorm(100)

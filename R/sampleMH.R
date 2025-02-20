@@ -5,6 +5,7 @@
 #' @param d the probability to jump to a non connected node
 #' @param size the size of the sample
 #' @return returns a list with random samples from network nodes and the acceptance rate of the jumps
+#' @importFrom stats runif
 #' 
 #' @export
 samplerMH <- function(A, Q, d = 0.5, size = 100){

@@ -9,7 +9,8 @@
 #'
 #' @examples
 #'
-#' # This function performs the following test: H_0: mean(x1) = mean(x2) against H_1: mean(x1) different from mean(x2)
+#' # This function performs the following test: H_0: mean(x1) = mean(x2)
+#' # against H_1: mean(x1) different from mean(x2)
 #'
 #' N <- 10000
 #' x1 <- rnorm(100)

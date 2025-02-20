@@ -20,10 +20,10 @@ A_compute: Compute adjacency matrix to construct a network
 \examples{
 library(openmuse)
 
-A <- A_compute(examples)
+A <- A_compute(example)
 
 #Using the struct parameter
-A <- A_compute(examples, "registrant")
+A <- A_compute(example, "registrant")
 
 
 }

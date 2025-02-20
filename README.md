@@ -50,7 +50,7 @@ For more information check the vignette:
 vignette("sampling", package = "openmuse")
 ```
 
-## Reference
+## References
 
 Thompson, S. (2006). **Targeted random walk designs**. Survey Methodology, 32(1), 11.
 

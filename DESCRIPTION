@@ -1,5 +1,5 @@
 Package: openmuse
-Title: A package that contains a sampling algorithm developed for the OpenMusE project.
+Title: A package that contains a sampling algorithm developed for the OpenMusE project
 Version: 0.0.0.9000
 Authors@R: 
     person("Fabio", "Vieira", , "f.v.vieira@uva.nl", role = c("aut", "cre"),
@@ -10,6 +10,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
+    here,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
