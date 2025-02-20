@@ -17,6 +17,12 @@ devtools::install_github("Fabio-Vieira/openmuse", build_vignettes = TRUE)
 
 ## Basic workflow
 
+In this example a network is constructed based on the registrant code extracted from the International Standard Recording Code (ISO 3901, 2019). This code has the following structure
+
+$$AA-6Q7-20-00047,$$
+
+where 6Q7 is the registrant code. Every registrant possesses a unique code. The network is constructed by connecting tracks with the same registrant code. Therefore, tracks with different registrants are not connected and that is why the jumps in the algorithm are necessary to properly explore the full network structure and obtain a representative sample. In the functions below, the parameter $d$ represents the probability of jumping. Hence, since $d = 0.5$, about half the random walk steps will be jumps. For more information see Thompson (2006).
+
 ```{R workflow}
 library(openmuse)
 #Load the data
@@ -46,6 +52,8 @@ vignette("sampling", package = "openmuse")
 ## Reference
 
 Thompson, S. (2006). Targeted random walk designs. Survey Methodology, 32(1), 11.
+
+ISO 3901. (2019). Information and documentation — International Standard Recording Code (ISRC). International Organization for Standardization; British Standards Institution
 
 ## Acknowledgements
 
