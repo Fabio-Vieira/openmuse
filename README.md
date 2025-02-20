@@ -19,9 +19,7 @@ devtools::install_github("Fabio-Vieira/openmuse", build_vignettes = TRUE)
 
 In this example a network is constructed based on the registrant code extracted from the International Standard Recording Code (ISO 3901, 2019). This code has the following structure
 
-<div class="center">
-AA-6Q7-20-00047,
-</div>
+<p align="center">AA-6Q7-20-00047,</p>
 
 
 where 6Q7 is the registrant code. Every registrant possesses a unique code. The network is constructed by connecting tracks with the same registrant code. Therefore, tracks with different registrants are not connected and that is why the jumps in the algorithm are necessary to properly explore the full network structure and obtain a representative sample. In the functions below, the parameter $d$ represents the probability of jumping. Hence, since $d = 0.5$, about half the random walk steps will be jumps. For more information see Thompson (2006).
