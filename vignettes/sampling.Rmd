@@ -96,7 +96,7 @@ box()
 Let's now compute the mean and compare with the mean of our fictitious population of tracks. These values shouldn't be too far from each other, but, given that the sample is randomly generated, this might happen once or twice. Then, let's generate 1000 samples and see how close that gets from the true value
 
 ```{r sample_mean}
-boot <- replicate(1000, samplerMH(A, QMH, d = 0.5, size = 100)$sample)
+boot <- replicate(1000, samplerMH(A, QMH, d = 0.5, size = 250)$sample)
 mean_boot <- sapply(1:ncol(boot), function(i) mean(example$popularity[boot[,i]]))
 print(paste("sample mean:", mean(mean_boot)))
 ```
