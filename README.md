@@ -58,4 +58,4 @@ ISO 3901. (2019). **Information and documentation — International Standard Rec
 
 ## Acknowledgements
 
-This package was developed in the scope of the Project Open Music Europe (OpenMusE). Funded by the European Union under Horizon Europe Grant No. 101095295.
+This package was developed in the scope of the **Project Open Music Europe** (OpenMusE). Funded by the **European Union** under **Horizon Europe Grant No. 101095295**.
